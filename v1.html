@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      function MyApp() {
+	const [output, setOutput] = React.useState('');
+	const [inputValue, setInputValue] = React.useState('');
+
+	function search(event) {
+		event.preventDefault();
+		try {
+			let remainder = BigInt(inputValue);
+			let denominator = 2n;
+			let result = "";
+			while (denominator <= remainder) {
+				if (remainder % denominator == 0) {
+					if (result == "")
+						result = denominator.toString();
+					else
+						result += " \u00D7 " + denominator;
+					remainder /= denominator;
+				} else {
+					++denominator;
+				}
+			}
+			setOutput(result);
+		} catch (e) {
+			setOutput(e.message);
+		}
+	}
+
+        return <>
+		<form onSubmit={search}>
+		<input type="text" onChange={(e)=>setInputValue(e.target.value)}/>
+		<button>Go</button>
+		</form>
+		<span>{output}</span>
+	</>;
+      }
+
+      const container = document.getElementById('root');
+      const root = ReactDOM.createRoot(container);
+      root.render(<MyApp />);
+
+    </script>
+    <!--
+      Note: this page is a great way to try React but it's not suitable for production.
+      It slowly compiles JSX with Babel in the browser and uses a large development build of React.
+
+      Read this page for starting a new React project with JSX:
+      https://react.dev/learn/start-a-new-react-project
+
+      Read this page for adding React with JSX to an existing project:
+      https://react.dev/learn/add-react-to-an-existing-project
+    -->
+  </body>
+</html>
