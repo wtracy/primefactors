@@ -2,7 +2,8 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Hello World</title>
+    <title>Prime Factors Calculator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes", target-densitydpi=device-dpi />
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 
@@ -40,6 +41,7 @@
 	}
 
         return <>
+		<p>Enter an integer below to calculate its prime factors!</p>
 		<form onSubmit={search}>
 		<input type="text" onChange={(e)=>setInputValue(e.target.value)}/>
 		<button>Go</button>
