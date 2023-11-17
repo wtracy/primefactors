@@ -43,7 +43,7 @@
         return <>
 		<p>Enter an integer below to calculate its prime factors!</p>
 		<form onSubmit={search}>
-		<input type="text" onChange={(e)=>setInputValue(e.target.value)}/>
+		<input type="number" onChange={(e)=>setInputValue(e.target.value)}/>
 		<button>Go</button>
 		</form>
 		<span>{output}</span>
