@@ -17,12 +17,21 @@
 	const [output, setOutput] = React.useState('');
 	const [inputValue, setInputValue] = React.useState('');
 
-	function search(event) {
+	function calculate(event) {
 		event.preventDefault();
 		try {
 			let remainder = BigInt(inputValue);
 			let denominator = 2n;
 			let result = "";
+
+			if (remainder < 0n) {
+				result = "-1";
+				remainder *= -1n;
+			}
+			if (remainder == 0n) {
+				result = "Zero";
+			}
+
 			while (denominator <= remainder) {
 				if (remainder % denominator == 0) {
 					if (result == "")
@@ -41,8 +50,8 @@
 	}
 
         return <>
-		<p>Enter an integer below to calculate its prime factors!</p>
-		<form onSubmit={search}>
+		<p>Enter an integer number below to calculate its prime factors!</p>
+		<form onSubmit={calculate}>
 		<input type="number" onChange={(e)=>setInputValue(e.target.value)}/>
 		<button>Go</button>
 		</form>
