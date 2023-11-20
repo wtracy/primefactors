@@ -29,7 +29,10 @@
 				remainder *= -1n;
 			}
 			if (remainder == 0n) {
-				result = "Zero";
+				result = "Did you really just ask me to calculate the prime factors of zero?";
+			}
+			if (remainder == 1n) {
+				result = "Did you really just ask me to calculate the prime factors of one?";
 			}
 
 			while (denominator <= remainder) {
